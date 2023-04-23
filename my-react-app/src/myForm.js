@@ -1,5 +1,6 @@
 import { useState } from "react";
-import ReactDOM from "react-dom/client";
+
+// import ReactDOM from "react-dom/client";
 
 function MyForm() {
     const [data, setData] = useState({
@@ -10,6 +11,14 @@ function MyForm() {
     })
     function submit(e){
         e.preventDefault();
+        fetch("http://localhost:3000/transactions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });  
+          
     }
 
     function handleSubmit(e){
@@ -32,7 +41,7 @@ function MyForm() {
       <input onChange={(e)=>handleSubmit(e)} id ="amount" value ={data.amount} type="number" name ="amount" placeholder='amount'/>
       </div>
       
-      <button>Submit</button>
+      <button input type='Submit'>Submit</button>
 
 
 

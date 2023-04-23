@@ -27,11 +27,11 @@ function TransactionList () {
             <tbody>
               {transactions.map((transaction,i)=>(
                 <tr key={i}>
-                  <td>{transaction.id}</td>
-                  <td>{transaction.date}</td>
-                  <td>{transaction.description}</td>
-                  <td>{transaction.category}</td>
-                  <td>{transaction.amount}</td>
+                  <td key={transaction.id}>{transaction.id}</td>
+                  <td key={transaction.date}>{transaction.date}</td>
+                  <td key={transaction.description}>{transaction.description}</td>
+                  <td key={transaction.category}>{transaction.category}</td>
+                  <td key={transaction.amount}>{transaction.amount}</td>
                 </tr>
               ))}
             </tbody>
