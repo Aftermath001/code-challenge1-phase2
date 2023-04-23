@@ -7,7 +7,7 @@ To get started, clone this repository onto your local machine. Then, navigate to
 The mini web app covers the following key concepts in React:
 
 ## Components
-Components are the building blocks of React applications. They are reusable pieces of code that can be composed to create more complex UIs. In this app, you will create several components, including a Header, Footer, Post, and Comment.
+Components are the building blocks of React applications. They are reusable pieces of code that can be composed to create more complex UIs. In this app, you will create several components, including Post, and Comment.
 
 ## Props
 Props are used to pass data between components. They are essentially the inputs to a component. In this app, you will use props to pass data from the App component to the child components.

@@ -1,7 +1,7 @@
 
 import './App.css';
-import TransactionList from './transactionList';
-import MyForm from './myForm';
+import TransactionList from './Components/transactionList';
+import MyForm from './Components/myForm';
     
 
 function App() {
