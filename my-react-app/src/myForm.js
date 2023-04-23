@@ -2,39 +2,43 @@ import { useState } from "react";
 import ReactDOM from "react-dom/client";
 
 function MyForm() {
-  const [inputs, setInputs] = useState({});
+    const [data, setData] = useState({
+      date:"",
+      description:"",
+      category:"",
+      amount:""
+    })
+    function submit(e){
+        e.preventDefault();
+    }
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs(values => ({...values, [name]: value}))
-  }
+    function handleSubmit(e){
+       const newData ={...data}
+       newData[e.target.id] = e.target.value
+       setData (newData)
+       console.log(newData)
+    }
+ return(
+    <form onSubmit ={(e)=> submit(e)}>
+      <h1>Form Input</h1>
+      <div className='myForm'>
+      <label>date</label>
+      <input onChange={(e)=>handleSubmit(e)} id ="date" value ={data.date} type="date" name ="date" placeholder='Date'/>
+      <label>Description</label>
+      <input onChange={(e)=>handleSubmit(e)} id ="description" value ={data.description} type="text" name ="description" placeholder='Description'/>
+      <label>category</label>
+      <input onChange={(e)=>handleSubmit(e)} id ="category" value ={data.category} type="text" name ="category" placeholder='catergory'/>
+      <label>Amount</label>
+      <input onChange={(e)=>handleSubmit(e)} id ="amount" value ={data.amount} type="number" name ="amount" placeholder='amount'/>
+      </div>
+      
+      <button>Submit</button>
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(inputs);
-  }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>Enter your Description:
-      <input 
-        type="text" 
-        name="description" 
-        value={inputs.description || ""} 
-        onChange={handleChange}
-      />
-      </label>
-      <label>Enter your category:
-        <input 
-          type="number" 
-          name="category" 
-          value={inputs.category || ""} 
-          onChange={handleChange}
-        />
-        </label>
-        <input type="submit" />
-    </form>
-  )
+
+      
+     </form>
+ )
+
 }
 export default MyForm;
