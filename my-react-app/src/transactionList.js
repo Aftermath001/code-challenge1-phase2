@@ -16,15 +16,15 @@ function TransactionList () {
       return (
         <div>
           <table>
-            <th>
+            <thead>
               <tr>
                 {column.map((c,i)=>(
                   <th keys={i}>{c}</th>
                   
                 ))}
               </tr>
-            </th>
-            <tb>
+            </thead>
+            <tbody>
               {transactions.map((transaction,i)=>(
                 <tr key={i}>
                   <td>{transaction.id}</td>
@@ -34,7 +34,7 @@ function TransactionList () {
                   <td>{transaction.amount}</td>
                 </tr>
               ))}
-            </tb>
+            </tbody>
           </table>
         </div>
       )
