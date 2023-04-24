@@ -9,27 +9,26 @@ function MyForm() {
       category:"",
       amount:""
     })
-    function submit(e){
-        e.preventDefault();
-        return(fetch("http://localhost:3000/db.json", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }) );
-        
-          
-    }
+    
 
     function handleSubmit(e){
        const newData ={...data}
        newData[e.target.id] = e.target.value
        setData (newData)
        console.log(newData)
-    }
+   }
+   fetch("http://localhost:3000/db.json", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((r) => r.json())
+    .then((newData) => (newData));
+
  return(
-    <form onSubmit ={(e)=> submit(e)}>
+    <form onSubmit ={(e)=> handleSubmit(e)}>
       <h1>Form Input</h1>
       <div className='myForm'>
       <label>date</label>
@@ -42,7 +41,7 @@ function MyForm() {
       <input onChange={(e)=>handleSubmit(e)} id ="amount" value ={data.amount} type="number" name ="amount" placeholder='amount'/>
       </div>
       
-      <button input type='submit'>Submit</button>
+      <button input type='ubmit'>Submit</button>
 
 
 

@@ -15,6 +15,7 @@ function TransactionList () {
     
         return (
           <div>
+            {/* <TransactionList onAddTransaction ={TransactionList}> */}
             <table>
               <thead>
                 <tr>
@@ -36,6 +37,8 @@ function TransactionList () {
                 ))}
               </tbody>
             </table>
+            {/* </TransactionList> */}
+            
           </div>
         )
                 }
