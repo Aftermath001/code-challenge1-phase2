@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import './transactions.css';
 function TransactionList () {
     const [column,setColumn]= useState([]);
   const [transactions,setTransactions] = useState([]);
