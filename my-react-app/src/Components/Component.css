@@ -3,3 +3,8 @@ table{
     width: 100%;
 }
 tr:hover {background-color: coral;}
+
+
+#edit-btn{
+    background-color: green;
+}

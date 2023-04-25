@@ -74,8 +74,8 @@ function TransactionTable() {
       onEdit={handleUpdate}
       onCancel={() => setEditId(null)}
     />
-  ) : ( <button className="edit-btn" onClick={()=> setEditId(transaction.id)}> Edit </button>)}
-         <button className="delete-btn" onClick={()=> handleDelete(transaction.id)}> Delete </button>
+  ) : ( <button className="edit-btn" onClick={()=> setEditId(transaction.id)} style={{background: 'green'}}> Edit </button>)}
+         <button className="delete-btn" onClick={()=> handleDelete(transaction.id)} style={{background: 'red'}}> Delete </button>
         </td>
        </tr>
      ))}
