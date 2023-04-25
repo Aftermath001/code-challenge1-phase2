@@ -1,14 +1,15 @@
 
 import './App.css';
-import TransactionList from './Components/transactionList';
+
 import MyForm from './Components/myForm';
 import NavBar from './Components/NavBar';   
+import TransactionTable from './Components/transactionList';
 
 function App() {
   return(
    <div className='App'>
     <NavBar/>
-    <TransactionList/>
+    <TransactionTable/>
      
      <MyForm/>
    </div>

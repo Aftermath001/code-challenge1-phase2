@@ -1,46 +1,81 @@
-import React, { useState, useEffect } from "react";
-import './transactions.css';
-function TransactionList () {
-    const [column,setColumn]= useState([]);
-  const [transactions,setTransactions] = useState([]);
-    useEffect(() => {
-        fetch("http://localhost:3000/db.json")
-          .then(response => response.json())
-          .then(data=>  {
-            setColumn(Object.keys(data.transactions[0]))
-            setTransactions(data.transactions)
-        })
-        },[]);
+import React, { useEffect, useState } from "react";
+import '../App.css'
+import EditTransaction from "./EditList";
 
-    
-        return (
-          <div>
-            {/* <TransactionList onAddTransaction ={TransactionList}> */}
-            <table>
-              <thead>
-                <tr>
-                  {column.map((c,i)=>(
-                    <th keys={i}>{c}</th>
-                    
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {transactions.map((transaction,i)=>(
-                  <tr key={i}>
-                    <td key={transaction.id}>{transaction.id}</td>
-                    <td key={transaction.date}>{transaction.date}</td>
-                    <td key={transaction.description}>{transaction.description}</td>
-                    <td key={transaction.category}>{transaction.category}</td>
-                    <td key={transaction.amount}>{transaction.amount}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            {/* </TransactionList> */}
-            
-          </div>
-        )
-                }
 
-export default TransactionList;
+
+function TransactionTable() {
+  const [transactions, setTransactions] = useState([]);
+  const [editId, setEditId] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/transactions")
+      .then((res) => res.json())
+      .then((transactions) => setTransactions(transactions));
+
+  }, []);
+
+
+  function handleDelete(id) {
+    fetch(`http://localhost:4000/transactions/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert("Are you sure you want to delete this transaction?");
+          setTransactions(transactions.filter((t) => t.id !== id));
+        } else {
+          throw new Error("Event couldn't be completed");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
+  function handleUpdate(updatedTransaction) {
+    const updatedTransactions = transactions.map((transaction) =>
+    transaction.id === updatedTransaction.id ? updatedTransaction : transaction
+    );
+    setTransactions(updatedTransactions);
+    setEditId(null);
+    }
+
+
+  return (
+    <table>
+      <thead>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Amount</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {transactions.map((transaction) => (
+          <tr key={transaction.id}>
+        
+            <td>{transaction.date}</td>
+            <td>{transaction.description}</td>
+            <td>{transaction.category}</td>
+            <td>{transaction.amount}</td>
+            <td>
+  {editId === transaction.id ? (
+    <EditTransaction
+      transaction={transaction}
+      onEdit={handleUpdate}
+      onCancel={() => setEditId(null)}
+    />
+  ) : ( <button className="edit-btn" onClick={()=> setEditId(transaction.id)}> Edit </button>)}
+         <button className="delete-btn" onClick={()=> handleDelete(transaction.id)}> Delete </button>
+        </td>
+       </tr>
+     ))}
+    </tbody>
+</table>
+  );
+}
+export default TransactionTable;
