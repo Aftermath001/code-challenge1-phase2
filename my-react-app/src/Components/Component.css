@@ -2,3 +2,4 @@ table{
     background-color: aqua;
     width: 100%;
 }
+tr:hover {background-color: coral;}

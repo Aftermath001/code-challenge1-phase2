@@ -45,7 +45,12 @@ function TransactionTable() {
 
   return (
     <table>
-      <thead>
+      <thead style={{
+   borderBottom: 'solid 3px blue',
+   background: 'green',
+   color: 'white',
+   fontWeight: 'bold',
+ }}>
         <tr>
             <th>Date</th>
             <th>Description</th>
