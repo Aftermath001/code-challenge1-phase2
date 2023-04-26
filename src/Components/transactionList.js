@@ -9,7 +9,7 @@ function TransactionTable() {
   const [editId, setEditId] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/transactions")
+    fetch("https://adams-dbjson-data.onrender.com/transactions")
       .then((res) => res.json())
       .then((transactions) => setTransactions(transactions));
 
@@ -17,7 +17,7 @@ function TransactionTable() {
 
 
   function handleDelete(id) {
-    fetch(`http://localhost:4000/transactions/${id}`, {
+    fetch(`https://adams-dbjson-data.onrender.com/transactions/${id}`, {
       method: "DELETE",
     })
       .then((res) => {

@@ -17,7 +17,7 @@ function AddTransaction() {
       amount
     };
 
-    fetch("http://localhost:4000/transactions", {
+    fetch("https://adams-dbjson-data.onrender.com/transactions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
