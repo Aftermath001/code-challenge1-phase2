@@ -23,4 +23,4 @@ Data fetching is a common task in web applications. In this app, you will fetch 
  
  ### Link
 
-  https://aftermath001.github.io/code-challenge1-phase2/
+  code-challenge1-phase2.vercel.app
